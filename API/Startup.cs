@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,9 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             // Dipendecy Injection Container
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+
 
             services.AddControllers();
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_configuration["connectionString:DefaultConnection"]));
