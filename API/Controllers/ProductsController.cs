@@ -2,19 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
+using API.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+
+    public class ProductsController : BaseApiController
     {
         private readonly IGenericRerpository<Product> _productsRepo;
         private readonly IGenericRerpository<ProductBrand> _productsBrandRepo;
@@ -44,11 +45,17 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<ProductToReturnDTO>> GetProduct(int id)
         {
             var spec = new ProductWithTypesAndBrandsSpecification(id);
 
             var product = await _productsRepo.GetEntitiyWithSpec(spec);
+
+            if (product == null)
+            {
+                return NotFound(new ApiReponce(404));
+            }
 
             return _mapper.Map<Product, ProductToReturnDTO>(product);
         }
