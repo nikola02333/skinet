@@ -10,12 +10,14 @@ import {ToastrModule} from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SectionHeaderComponent } from './section-header/section-header.component';
 import {BreadcrumbModule} from 'xng-breadcrumb';
+import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
   declarations: [NavBarComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent, SectionHeaderComponent],
   imports: [
 CommonModule,
 RouterModule,
+SharedModule,
 BreadcrumbModule,
 BrowserAnimationsModule,
 ToastrModule.forRoot({
