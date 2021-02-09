@@ -10,7 +10,6 @@ import { ShopModule } from './shop/shop.module';
 import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './core/interceptors/error-interceptor';
 import {NgxSpinnerModule} from 'ngx-spinner';
-
 import { LoadingInterceptor } from './core/interceptors/loading.interceptos';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 
