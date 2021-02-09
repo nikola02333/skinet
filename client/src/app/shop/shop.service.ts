@@ -21,8 +21,8 @@ export class ShopService {
 
     let params = new HttpParams();
 
-    if (sophParams.BrandId !== 0 ){
-      params = params.append('brandId',sophParams.BrandId.toString());
+    if (sophParams.brandId !== 0 ){
+      params = params.append('brandId',sophParams.brandId.toString());
     }
     if (sophParams.typeId !== 0 ){
       params = params.append('typeId', sophParams.typeId.toString());

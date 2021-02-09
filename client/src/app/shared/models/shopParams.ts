@@ -1,5 +1,5 @@
 export class ShopParams {
-    BrandId = 0;
+    brandId = 0;
     typeId = 0;
     sort = 'name';
     pageNumber = 1;
